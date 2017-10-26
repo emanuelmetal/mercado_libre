@@ -1,28 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { string, func, object } from 'prop-types'
-import { setSearchTerm } from '../../redux/actionCreators'
+import { setSearchTerm } from 'actions/search-box'
 import './SearchBox.scss'
 import logo from '../../styles/img/Logo_ML.png'
 
-const SearchBox = React.createClass({
-  contextTypes: {
-    router: object
-  },
-  propTypes: {
-    searchTerm: string,
-    dispatchSetSearchTerm: func
-  },
+class SearchBox extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {}
+
+    this.handleSearchTermChange = this.handleSearchTermChange.bind(this)
+  }
+
   handleSearchTermChange (event) {
     this.props.dispatchSetSearchTerm(event.target.value)
-  },
+  }
+
   handleSearchSubmit (event) {
     event.preventDefault()
     // this.context.router.transitionTo('/search')
-  },
+  }
+
   render () {
     return (
-      <nav className='navbar navbar-inverse navbar-fixed-top ml-search-box'>
+      <nav className='navbar navbar-inverse navbar-static-top ml-search-box'>
         <div className='container'>
           <div className='navbar-header'>
             <button type='button' className='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
@@ -43,7 +45,7 @@ const SearchBox = React.createClass({
                     onChange={this.handleSearchTermChange}
                     name='search'
                     value={this.props.searchTerm}
-                    placeholder='Search Here'
+                    placeholder='No dejes de buscar'
                     autoComplete='off'
                     autoFocus='autofocus'
                     type='text' />
@@ -56,7 +58,16 @@ const SearchBox = React.createClass({
       </nav>
     )
   }
-})
+}
+
+SearchBox.propTypes = {
+  searchTerm: string,
+  dispatchSetSearchTerm: func
+}
+
+SearchBox.contextTypes = {
+  router: object
+}
 
 const mapStateToProps = (state) => {
   return {

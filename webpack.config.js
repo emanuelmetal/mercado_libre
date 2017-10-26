@@ -1,6 +1,9 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+const ROOT_PATH = path.resolve(__dirname)
+const APP_PATH = path.resolve(ROOT_PATH, 'app')
+
 module.exports = {
   context: __dirname,
   entry: './app/ClientApp.js',
@@ -16,6 +19,18 @@ module.exports = {
     port: 9090
   },
   resolve: {
+    alias: {
+      npm: 'node_modules',
+      src: 'src',
+      app: APP_PATH,
+      actions: `${APP_PATH}/actions`,
+      api: `${APP_PATH}/api`,
+      constants: `${APP_PATH}/constants`,
+      utils: `${APP_PATH}/utils`,
+      components: `${APP_PATH}/components`,
+      containers: `${APP_PATH}/containers`,
+      selectors: `${APP_PATH}/selectors`
+    },
     extensions: ['.js', '.json']
   },
   stats: {
