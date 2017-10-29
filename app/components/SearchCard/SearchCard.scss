@@ -1,12 +1,35 @@
 .ml-search-card {
 
-  display: inline-block;
+  display: flex;
   border-radius: 4px;
+
   &__image {
+    display: inline-block;
+    margin: 16px;
   }
 
   img {
     width: 180px;
     height: 180px;
+  }
+
+  &__info {
+    margin-top: 31px;
+  }
+
+  &__price {
+    font-size: 24px;
+  }
+
+  &__freeshipping {
+    margin-left: 10px;
+    height: auto;
+    width: auto;
+    content: url('../../styles/img/ic_shipping.png')
+  }
+
+  &__description {
+    margin-top: 32px;
+    font-size: 18px;
   }
 }

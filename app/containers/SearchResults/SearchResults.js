@@ -4,39 +4,34 @@ import { getItems } from 'actions/search-results'
 import { func, array } from 'prop-types'
 
 import SearchCard from 'components/SearchCard/SearchCard'
-
+import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
+import './SearchResults.scss'
 class SearchResult extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  // }
-
   componentDidMount () {
     this.props.dispatchGetItems()
   }
 
   render () {
     return (
-      <div>
-        <div className='breadcrumb'>
-          <p>{this.props.breadcrumb.map(path => path.name)}</p>
-        </div>
-        <div className='results'>
-          {this.props.searchResults.map(item => <SearchCard item={item} />)}
-        </div>
+      <div className='ml-search-results'>
+        <Breadcrumb path={this.props.breadcrumb} />
+        <ol className='ml-search-results__items'>
+          {this.props.items.map(item => <li className='ml-search-results__item' key={item.id} ><SearchCard item={item} /></li>)}
+        </ol>
       </div>
     )
   }
 }
 
 SearchResult.propTypes = {
-  searchResults: array.isRequired,
+  items: array.isRequired,
   breadcrumb: array.isRequired,
   dispatchGetItems: func.isRequired
 }
 
 const mapStateToProps = state => ({
-  searchResults: state.searchResults.results,
-  breadcrumb: state.searchResults.filters.values[0].path_from_root
+  items: state.searchResults.items,
+  breadcrumb: state.searchResults.categories
 })
 
 const mapDispatchToProps = dispatch => (

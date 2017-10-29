@@ -1,0 +1,30 @@
+@import "../../styles/_colors";
+
+.ml-search-results {
+
+  &__items, &__item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    height: 214px;
+    position: relative;
+    display: block;
+  }
+
+  &__items &__item:after {
+    content: '';
+    position: absolute;
+    left: 24px;
+    bottom: 0;
+    height: 1px;
+    width: 94.5%;
+    border-bottom: 1px solid $ml_grey_background;
+  }
+
+  &__items {
+    background-color: white;
+  }
+}

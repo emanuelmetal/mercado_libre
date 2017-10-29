@@ -19,7 +19,7 @@ const App = () => {
           component={(props) => (
             <div>
               <AsyncRoute props={props} loadingPromise={System.import('./components/SearchBox/SearchBox')} />
-              <div className='container'>
+              <div className='container ml-content'>
                 <AsyncRoute props={props} loadingPromise={System.import('./containers/SearchResults/SearchResults')} />
               </div>
             </div>

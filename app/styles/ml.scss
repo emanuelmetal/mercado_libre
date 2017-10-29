@@ -1,1 +1,7 @@
 @import "./_bootstrap-custom";
+
+@import "./_colors";
+
+body {
+  background-color: $ml_grey_background;
+}
