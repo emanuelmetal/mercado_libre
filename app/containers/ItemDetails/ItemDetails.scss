@@ -1,0 +1,56 @@
+@import "../../styles/_colors";
+
+.ml-item-details {
+
+  border-radius: 4px;
+  background-color: white;
+
+  &__upper-details {
+    display: flex;
+  }
+
+  &__image {
+    display: inline-block;
+    margin: 16px;
+  }
+
+  img {
+    width: 680px;
+    height: 680px;
+  }
+
+  &__info {
+    margin-top: 32px;
+    margin-right: 32px;
+    width: 100%;
+  }
+
+  &__price {
+    font-size: 46px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  &__freeshipping {
+    margin-left: 10px;
+    height: auto;
+    width: auto;
+    content: url('../../styles/img/ic_shipping.png')
+  }
+
+  &__title {
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &__button, &__button:hover {
+    width: 100%;
+    background-color: $ml_blue;
+    color: white;
+  }
+
+  &__description {
+    margin-left: 32px;
+  }
+}

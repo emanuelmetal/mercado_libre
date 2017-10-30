@@ -6,7 +6,7 @@ import './Breadcrumb.scss'
 const Breadcrumb = ({path}) => (
   <div className='ml-breadcrumb'>
     <ol>
-      {path.map(item => (<li className='ml-breadcrumb__item'>{item}</li>))}
+      {path.map((item, index) => (<li key={index} className='ml-breadcrumb__item'>{item}</li>))}
     </ol>
   </div>
 )

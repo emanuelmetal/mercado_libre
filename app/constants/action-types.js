@@ -6,5 +6,8 @@ export default keyMirror({
   },
   SEARCH_RESULTS: {
     GET_ITEMS: null
+  },
+  ITEM: {
+    GET_ITEM_DETAILS: null
   }
 }, { connChar: '/' })

@@ -6,17 +6,19 @@ import { func, array } from 'prop-types'
 import SearchCard from 'components/SearchCard/SearchCard'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import './SearchResults.scss'
+
 class SearchResult extends React.Component {
   componentDidMount () {
     this.props.dispatchGetItems()
   }
 
   render () {
+    const { breadcrumb, items } = this.props
     return (
       <div className='ml-search-results'>
-        <Breadcrumb path={this.props.breadcrumb} />
+        <Breadcrumb path={breadcrumb} />
         <ol className='ml-search-results__items'>
-          {this.props.items.map(item => <li className='ml-search-results__item' key={item.id} ><SearchCard item={item} /></li>)}
+          {items.map(item => <li className='ml-search-results__item' key={item.id} ><SearchCard item={item} /></li>)}
         </ol>
       </div>
     )

@@ -4,15 +4,16 @@ import results from './results'
 const { SEARCH_RESULTS } = actionTypes
 
 const initialState = {
-  categories: results.categories,
+  categories: [],
   items: []
 }
 
-const { items } = results
+const { items, categories } = results
 
 export default handleActions({
   [SEARCH_RESULTS.GET_ITEMS]: (state) => ({
     ...state,
-    items
+    items,
+    categories
   })
 }, initialState)
