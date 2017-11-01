@@ -1,7 +1,9 @@
 import React from 'react'
+import queryString from 'query-string'
 import { connect } from 'react-redux'
 import { string, func, object } from 'prop-types'
 import { setSearchTerm } from 'actions/search-box'
+import { getItems } from 'actions/search-results'
 import './SearchBox.scss'
 import logo from '../../styles/img/Logo_ML.png'
 
@@ -11,6 +13,7 @@ class SearchBox extends React.Component {
     this.state = {}
 
     this.handleSearchTermChange = this.handleSearchTermChange.bind(this)
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
   }
 
   handleSearchTermChange (event) {
@@ -19,10 +22,21 @@ class SearchBox extends React.Component {
 
   handleSearchSubmit (event) {
     event.preventDefault()
-    // this.context.router.transitionTo('/search')
+    console.log(this.props.searchTerm)
+    this.props.dispatchGetItems()
+    this.props.history.push(`/items?search=${this.props.searchTerm}`)
+  }
+
+  componentDidMount () {
+    const { search = '' } = queryString.parse(this.props.location.search)
+    if (search !== '') {
+      this.props.dispatchSetSearchTerm(search)
+      this.props.dispatchGetItems()
+    }
   }
 
   render () {
+    console.log('sbRender')
     return (
       <nav className='navbar navbar-inverse navbar-static-top ml-search-box'>
         <div className='container'>
@@ -45,7 +59,7 @@ class SearchBox extends React.Component {
                     onChange={this.handleSearchTermChange}
                     name='search'
                     value={this.props.searchTerm}
-                    placeholder='No dejes de buscar'
+                    placeholder='Nunca dejes de buscar'
                     autoComplete='off'
                     autoFocus='autofocus'
                     type='text' />
@@ -61,17 +75,16 @@ class SearchBox extends React.Component {
 }
 
 SearchBox.propTypes = {
+  location: object,
   searchTerm: string,
-  dispatchSetSearchTerm: func
-}
-
-SearchBox.contextTypes = {
-  router: object
+  history: object,
+  dispatchSetSearchTerm: func,
+  dispatchGetItems: func.isRequired
 }
 
 const mapStateToProps = (state) => {
   return {
-    searchTerm: state.searchTerm
+    searchTerm: state.searchBox.searchTerm
   }
 }
 
@@ -79,6 +92,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     dispatchSetSearchTerm (searchTerm) {
       dispatch(setSearchTerm(searchTerm))
+    },
+    dispatchGetItems () {
+      dispatch(getItems())
     }
   }
 }

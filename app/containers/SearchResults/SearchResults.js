@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getItems } from 'actions/search-results'
+// import { getItems } from 'actions/search-results'
 import { func, array } from 'prop-types'
 
 import SearchCard from 'components/SearchCard/SearchCard'
@@ -9,7 +9,7 @@ import './SearchResults.scss'
 
 class SearchResult extends React.Component {
   componentDidMount () {
-    this.props.dispatchGetItems()
+    // this.props.dispatchGetItems()
   }
 
   render () {
@@ -27,8 +27,7 @@ class SearchResult extends React.Component {
 
 SearchResult.propTypes = {
   items: array.isRequired,
-  breadcrumb: array.isRequired,
-  dispatchGetItems: func.isRequired
+  breadcrumb: array.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -37,11 +36,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => (
-  {
-    dispatchGetItems () {
-      dispatch(getItems())
-    }
-  }
+  {}
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResult)

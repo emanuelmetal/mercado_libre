@@ -12,7 +12,7 @@ const SearchCard = ({ item }) => (
     </div>
     <div className='ml-search-card__info'>
       <div className='ml-search-card__price'>
-        <span className='ml-search-card__price-symbol'>{item.price.currency}</span>
+        <span className='ml-search-card__price-symbol'>{item.price.symbol}</span>
         <span className='ml-search-card__price-amount'>{item.price.amount}</span>
         {item.free_shipping ? <span className='ml-search-card__freeshipping' /> : ''}
       </div>

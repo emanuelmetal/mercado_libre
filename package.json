@@ -13,7 +13,7 @@
     "watch": "npm run build -- --watch",
     "test": "cross-env NODE_ENV=test & jest",
     "cover": "npm run test -- --coverage",
-    "start": "cross-env NODE_ENV=server node server.js"
+    "start": "cross-env NODE_ENV=server node server/server.js"
   },
   "dependencies": {
     "axios": "^0.17.0",
@@ -24,6 +24,7 @@
     "key-mirror-nested": "^1.2.4",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
+    "query-string": "^5.0.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
@@ -32,6 +33,7 @@
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-logger": "3.0.6",
+    "redux-promise-middleware": "^4.4.1",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {

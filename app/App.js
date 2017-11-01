@@ -16,14 +16,21 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router history={history}>
-        <div className='app'>
+        <div className='app ml-content'>
           <Route
             exact
             path='/'
             component={(props) => (
+              <AsyncRoute props={props} loadingPromise={System.import('./containers/SearchBox/SearchBox')} />
+            )}
+          />
+          <Route
+            exact
+            path='/items'
+            component={(props) => (
               <div>
-                <AsyncRoute props={props} loadingPromise={System.import('./components/SearchBox/SearchBox')} />
-                <div className='container ml-content'>
+                <AsyncRoute props={props} loadingPromise={System.import('./containers/SearchBox/SearchBox')} />
+                <div className='container'>
                   <AsyncRoute props={props} loadingPromise={System.import('./containers/SearchResults/SearchResults')} />
                 </div>
               </div>
@@ -33,7 +40,7 @@ const App = () => {
             path='/item'
             component={(props) => (
               <div>
-                <AsyncRoute props={props} loadingPromise={System.import('./components/SearchBox/SearchBox')} />
+                <AsyncRoute props={props} loadingPromise={System.import('./containers/SearchBox/SearchBox')} />
                 <div className='container ml-content'>
                   <AsyncRoute props={props} loadingPromise={System.import('./containers/ItemDetails/ItemDetails')} />
                 </div>

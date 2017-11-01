@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 import actionTypes from 'constants/action-types'
-import results from './results'
+// import results from './results'
 const { SEARCH_RESULTS } = actionTypes
 
 const initialState = {
@@ -8,12 +8,15 @@ const initialState = {
   items: []
 }
 
-const { items, categories } = results
+// const { items, categories } = results
 
 export default handleActions({
-  [SEARCH_RESULTS.GET_ITEMS]: (state) => ({
-    ...state,
-    items,
-    categories
-  })
+  [`${SEARCH_RESULTS.GET_ITEMS}_FULFILLED`]: (state, action) => {
+    const { items, categories } = action.payload.data
+    return {
+      ...state,
+      items,
+      categories
+    }
+  }
 }, initialState)
