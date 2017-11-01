@@ -37,7 +37,7 @@ const App = () => {
             )}
           />
           <Route
-            path='/item'
+            path='/items/:id'
             component={(props) => (
               <div>
                 <AsyncRoute props={props} loadingPromise={System.import('./containers/SearchBox/SearchBox')} />

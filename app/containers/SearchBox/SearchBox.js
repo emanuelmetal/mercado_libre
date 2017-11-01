@@ -22,7 +22,7 @@ class SearchBox extends React.Component {
 
   handleSearchSubmit (event) {
     event.preventDefault()
-    console.log(this.props.searchTerm)
+
     this.props.dispatchGetItems()
     this.props.history.push(`/items?search=${this.props.searchTerm}`)
   }
@@ -36,7 +36,6 @@ class SearchBox extends React.Component {
   }
 
   render () {
-    console.log('sbRender')
     return (
       <nav className='navbar navbar-inverse navbar-static-top ml-search-box'>
         <div className='container'>

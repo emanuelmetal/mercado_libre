@@ -26,10 +26,8 @@ function handleItemResponse (response) {
       sold_quantity: response.data.sold_quantity
     }
   }
-  console.log(item)
   return getDescription(item)
     .then(response => {
-      // console.log(response)
       return getCurrency(response)
     })
 }
