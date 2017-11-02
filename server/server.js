@@ -15,18 +15,18 @@ const ReactRouter = require('react-router')
 const ServerRouter = ReactRouter.ServerRouter
 const getResultItems = require('./controllers/itemsController')
 const getItem = require('./controllers/productController')
-const App = require('../app/App').default
+// const App = require('../app/App').default
 
-const cssRequireHook = require('css-modules-require-hook');
-const sass = require('node-sass');
-cssRequireHook({
-    generateScopedName: '[name]__[local]___[hash:base64:5]',
-    extensions: [ '.scss', '.css' ],
-    preprocessCss: data => sass.renderSync({
-        data,
-        includePaths: [path.resolve(__dirname, '../app/styles')]
-    }).css
-});
+// const cssRequireHook = require('css-modules-require-hook');
+// const sass = require('node-sass');
+// cssRequireHook({
+//     generateScopedName: '[name]__[local]___[hash:base64:5]',
+//     extensions: [ '.scss', '.css' ],
+//     preprocessCss: data => sass.renderSync({
+//         data,
+//         includePaths: [path.resolve(__dirname, '../app/styles')]
+//     }).css
+// });
 
 app.set('port', (process.env.PORT || 3000))
 
@@ -63,14 +63,14 @@ app.get('/api/items/:id', function(req, res) {
 
 app.get(['/'], function(req, res) {
   // const context = ReactRouter.createServerRenderContext()
-  const body = ReactDOMServer.renderToString(
-    React.createElement(ServerRouter, {location: req.url},
-      React.createElement(App)
-    )
-  )
-
-  res.write(template({body: body}))
-  res.end()
+  // const body = ReactDOMServer.renderToString(
+  //   React.createElement(ServerRouter, {location: req.url},
+  //     React.createElement(App)
+  //   )
+  // )
+  //
+  // res.write(template({body: body}))
+  // res.end()
 })
 
 app.listen(app.get('port'), function() {

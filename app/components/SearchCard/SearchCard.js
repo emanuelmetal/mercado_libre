@@ -18,7 +18,9 @@ const SearchCard = ({ item }) => (
         {item.free_shipping ? <span className='ml-search-card__freeshipping' /> : ''}
       </div>
       <div className='ml-search-card__description'>
-        {item.title}
+        <Link to={`/items/${item.id}`} >
+          {item.title}
+        </Link>
       </div>
       <div className='ml-search-card__condition'>
         {status[item.condition]}
